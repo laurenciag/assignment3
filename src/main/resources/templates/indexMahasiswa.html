@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Data Mahasiswa</title>
+</head>
+<body>
+<table class="table table-stripped">
+    <tr>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>IPK</th>
+        <th>Jurusan</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="mhs : ${page}">
+    <td th:text="${mhs.nim}"></td>
+    <td th:text="${mhs.name}"></td>
+    <td th:text="${mhs.ipk}"></td>
+    <td th:text="${mhs.jurusan}"></td>
+    <td>
+        <a href="#">Edit</a>
+        <a href="#">Delete</a>
+        <a href="#">Detail</a>
+    </td>
+    </tr>
+</table>
+</body>
+</html>

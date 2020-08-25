@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/header :: head"></div>
+
+<body>
+<div class="limiter">
+    <h1 style="margin-bottom:50px;text-align:center">Item Barang</h1>
+<!--    <table class="table table-striped">-->
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table table-stripped">
+                <div class="row header">
+                    <div class="cell">
+                        id
+                    </div>
+                    <div class="cell">
+                        Item Name
+                    </div>
+                    <div class="cell">
+                        Item Type
+                    </div>
+                    <div class="cell">
+                        Description
+                    </div>
+                    <div class="cell">
+                        Price
+                    </div>
+                    <div class="cell">
+                        Stock
+                    </div>
+                    <div class="cell">
+                        Updated Date
+                    </div>
+                    <div class="cell">
+                        Action
+                    </div>
+                </div>
+                <div class="row" th:each="item : ${selectItems}">
+                    <div class="cell" data-title="id">
+                        <p th:text="${item.id}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Item Name">
+                        <p th:text="${item.name}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Item Type">
+                        <p th:text="${item.type}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Description">
+                        <p th:text="${item.desc}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Price">
+                        <p th:text="${item.price}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Stock">
+                        <p th:text="${item.stock}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Updated Date">
+                        <p th:text="${item.updatedDate}">
+
+                        </p>
+                    </div>
+                    <div class="cell" data-title="Action">
+                        <button class="btn button1">
+                            Update
+                        </button>
+                        <button class="btn button2">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    </table>-->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
+<!--        crossorigin="anonymous"></script>-->
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

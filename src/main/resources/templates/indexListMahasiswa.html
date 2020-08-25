@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/header :: head"></div>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1 style="margin-bottom:50px;text-align:center">List Data Mahasiswa</h1>
+<!--<table class="table table-stripped">-->
+<div class="container-table100">
+    <div class="wrap-table100">
+        <div class="table table-stripped">
+            <div class="row header">
+                <div class="cell">NIM</div>
+                <div class="cell">Nama</div>
+                <div class="cell">IPK</div>
+                <div class="cell">Jurusan</div>
+                <div class="cell">Action</div>
+            </div>
+            <div class="row" th:each="mhs : ${page.content}">
+                <div class="cell" data-title="NIM">
+                    <p th:text="${mhs.nim}"></p>
+                </div>
+                <div class="cell" data-title="Nama">
+                    <p th:text="${mhs.name}"></p>
+                </div>
+                <div class="cell" data-title="IPK">
+                    <p th:text="${mhs.ipk}"></p>
+                </div>
+                <div class="cell" data-title="Jurusan">
+                    <p th:text="${mhs.jurusan}"></p>
+                </div>
+                <div class="cell" data-title="Action">
+<!--                    <td th:text="${user.name}"></td>-->
+<!--                    <td th:text="${user.ipk}"></td>-->
+                    <td><a class="btn btn-primary btn-sm" th:href="@{/edit/{id}(id=${mhs.id})}">Edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" th:href="@{/delete/{id}(id=${mhs.id})}">Delete</a></td>
+<!--                    <a href="#">Detail</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pagination-div-page">
+    <span>Showing [[${(page.number)*page.size+1}]] to </span>
+    <span th:if="${page.number*page.size+page.size < page.totalElements}">
+                    [[${page.number*page.size+page.size}]]</span>
+    <span th:unless="${page.number*page.size+page.size < page.totalElements}">
+                    [[${page.totalElements}]]</span>
+    <span>of [[${page.totalPages}]] Pages</span>
+</div>
+<!--</table>-->
+ <!-- Pagination Bar -->
+<!--<div class="pagination-div-page">-->
+<!--<span>Item</span>-->
+<!--<span>[[${page.number*page.size+1}]]</span>-->
+<!--<span>-</span>-->
+<!--<span th:if="${page.number*page.size+page.size < page.totalElements}">-->
+<!--                [[${page.number*page.size+page.size}]]</span>-->
+<!--<span th:unless="${page.number*page.size+page.size < page.totalElements}">-->
+<!--                [[${page.totalElements}]]</span>-->
+<!--</div>-->
+<div class="pagination-div ">
+    <span th:if="${page.hasPrevious()}">
+        <a th:href="@{/(page=${page.number-1},size=${page.size})}">Previous</a>
+    </span>
+    <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+        <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+        <span th:unless="${page.number == i}">
+             <a th:href="@{/(page=${i},size=${page.size})}">[[${i}+1]]</a>
+        </span>
+    </th:block>
+    <span th:if="${page.hasNext()}">
+        <a th:href="@{/(page=${page.number+1},size=${page.size})}">Next</a>
+    </span>
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

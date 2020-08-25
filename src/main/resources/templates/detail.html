@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragments/header :: head"></div>
+
+
+<body>
+<h1 style="margin-bottom:50px;text-align:center">Edit Data Mahasiswa</h1>
+
+
+<table table-stripped>
+    <div class="edit container">
+        <form action="#" th:action="@{/updateMahasiswa/{id}(id=${user.id})}"
+              th:object="${user}" method="post">
+            <div class="edit-body">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Name">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <div class="edit-body">
+                <label for="ipk">IPK</label>
+                <input class="form-control" type="text" th:field="*{ipk}" id="ipk" placeholder="ipk">
+                <span th:if="${#fields.hasErrors('ipk')}" th:errors="*{ipk}"></span>
+            </div>
+            <div class="edit-body">
+                <label for="nim">NIM</label>
+                <input class="form-control" type="text" th:field="*{nim}" id="nim" placeholder="nim" readonly>
+                <span th:if="${#fields.hasErrors('nim')}" th:errors="*{nim}"></span>
+            </div>
+            <div class="edit-body">
+                <label for="jurusan">Jurusan</label>
+                <input class="form-control" type="text" th:field="*{jurusan}" id="jurusan" placeholder="jurusan"
+                       readonly>
+                <span th:if="${#fields.hasErrors('jurusan')}" th:errors="*{jurusan}"></span>
+            </div>
+        </form>
+        <input class="btn btn-primary" style="float:right;" type="submit" value="Update User">
+    </div>
+</table>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
